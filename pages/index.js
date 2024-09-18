@@ -84,149 +84,55 @@ export default function home() {
     },
   ];
 
+  let number = 0;
+
+  function add() {
+    number++;
+    document.getElementById("output").innerText = number;
+  }
+
+  function remove() {
+    number--;
+    document.getElementById("output").innerText = number;
+  }
+
   return (
-    <div className="m-auto text-center">
-      <div className="grid grid-cols-3 gap-6 p-10 ">
-        <Card className="p-10 text-start">
-          Name:{friends[0].name}
-          <br />
-          Age:{friends[0].age}
-          <br />
-          Sex:{friends[0].sex}
-          <br />
-          Profession:{friends[0].profession}
-          <br />
-          Skin:{friends[0].skin}
-          <br />
-          Id:{friends[0].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[1].name}
-          <br />
-          Age:{friends[1].age}
-          <br />
-          Sex:{friends[1].sex}
-          <br />
-          Profession:{friends[1].profession}
-          <br />
-          Skin:{friends[1].skin}
-          <br />
-          Id:{friends[1].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[2].name}
-          <br />
-          Age:{friends[2].age}
-          <br />
-          Sex:{friends[2].sex}
-          <br />
-          Profession:{friends[2].profession}
-          <br />
-          Skin:{friends[2].skin}
-          <br />
-          Id:{friends[2].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[3].name}
-          <br />
-          Age:{friends[3].age}
-          <br />
-          Sex:{friends[3].sex}
-          <br />
-          Profession:{friends[3].profession}
-          <br />
-          Skin:{friends[3].skin}
-          <br />
-          Id:{friends[3].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[4].name}
-          <br />
-          Age:{friends[4].age}
-          <br />
-          Sex:{friends[4].sex}
-          <br />
-          Profession:{friends[4].profession}
-          <br />
-          Skin:{friends[4].skin}
-          <br />
-          Id:{friends[4].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[5].name}
-          <br />
-          Age:{friends[5].age}
-          <br />
-          Sex:{friends[5].sex}
-          <br />
-          Profession:{friends[5].profession}
-          <br />
-          Skin:{friends[5].skin}
-          <br />
-          Id:{friends[5].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[6].name}
-          <br />
-          Age:{friends[6].age}
-          <br />
-          Sex:{friends[6].sex}
-          <br />
-          Profession:{friends[6].profession}
-          <br />
-          Skin:{friends[6].skin}
-          <br />
-          Id:{friends[6].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[7].name}
-          <br />
-          Age:{friends[7].age}
-          <br />
-          Sex:{friends[7].sex}
-          <br />
-          Profession:{friends[7].profession}
-          <br />
-          Skin:{friends[7].skin}
-          <br />
-          Id:{friends[7].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[8].name}
-          <br />
-          Age:{friends[8].age}
-          <br />
-          Sex:{friends[8].sex}
-          <br />
-          Profession:{friends[8].profession}
-          <br />
-          Skin:{friends[8].skin}
-          <br />
-          Id:{friends[8].id}
-          <br />
-        </Card>
-        <Card className="p-10 text-start">
-          Name:{friends[9].name}
-          <br />
-          Age:{friends[9].age}
-          <br />
-          Sex:{friends[9].sex}
-          <br />
-          Profession:{friends[9].profession}
-          <br />
-          Skin:{friends[9].skin}
-          <br />
-          Id:{friends[9].id}
-          <br />
-        </Card>
+    <div className="grid grid-cols-3 items-center">
+      {friends.map((item) => (
+        <div className="p-3">
+          <Card className="p-10 text-start ">
+            Name:{item.name}
+            <br />
+            Age:{item.age}
+            <br />
+            Gender:{item.sex}
+            <br />
+            Profession:{item.profession}
+            <br />
+            Skin:{item.skin}
+            <br />
+            Id:{item.id}
+            <br />
+          </Card>
+        </div>
+      ))}
+      <Card className="flex justify-center items-center p-3 w-fit h-fit">
+        Average age of friends:
+        {friends.reduce((ages, person) => ages + person.age, 0) /
+          friends.length}
+      </Card>
+      <div className="flex gap-8">
+        <button onClick={remove} className="rounded-2xl p-3 bg-green-500">
+          remove
+        </button>
+
+        <div id="output" className="bg-slate-400 p-3 rounded-2xl w-24 flex items-center justify-center">
+          0
+        </div>
+
+        <button onClick={add} className="rounded-2xl p-3 bg-green-500">
+        add
+        </button>
       </div>
     </div>
   );
