@@ -1,4 +1,5 @@
 import Calc from "@/components/Calc";
+import Problem from "@/components/problem";
 import Test from "@/components/Test";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
       Home page
       <Calc />
       <Test />
+      <Problem/>
     </div>
   );
 }
